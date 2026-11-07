@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------------------
+# Basic security policy used by:  netauto audit
+#
+# Each check has:
+#   id          - must match a check function in netauto/audit.py
+#   name        - human readable description shown in output and report
+#   severity    - HIGH, MEDIUM or LOW
+#   enabled     - set to false to skip a check
+#   remediation - the Cisco IOS command(s) that fix a FAIL
+# ---------------------------------------------------------------------------
+checks:
+  - id: ssh_version_2
+    name: SSH version 2 must be configured
+    severity: HIGH
+    enabled: true
+    remediation: "ip ssh version 2"
+
+  - id: no_telnet
+    name: Telnet must not be enabled on VTY lines
+    severity: HIGH
+    enabled: true
+    remediation: "line vty 0 4 -> transport input ssh"
+
+  - id: no_weak_enable_password
+    name: Weak enable password must not be configured
+    severity: HIGH
+    enabled: true
+    remediation: "no enable password ; enable algorithm-type scrypt secret <strong-secret>"
+
+  - id: remote_logging
+    name: Remote logging (syslog) must be configured
+    severity: MEDIUM
+    enabled: true
+    remediation: "logging host <syslog-server-ip>"
+
+  - id: password_encryption
+    name: Password encryption service must be enabled
+    severity: MEDIUM
+    enabled: true
+    remediation: "service password-encryption"
+
+  - id: ntp_server
+    name: NTP server must be configured
+    severity: LOW
+    enabled: true
+    remediation: "ntp server <ntp-server-ip>"

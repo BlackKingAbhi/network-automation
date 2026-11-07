@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# Device inventory for netauto
+#
+# IMPORTANT:
+#   * The 192.168.150.0/24 addresses are EXAMPLES. Change them to match the
+#     management network of YOUR lab (GNS3, EVE-NG or Cisco CML).
+#     Cisco Packet Tracer devices cannot be reached by Python/Netmiko.
+#   * Do NOT put usernames or passwords in this file. Credentials are read
+#     from environment variables or asked for at runtime.
+#
+# Fields:
+#   name        - used for the backup filename (R1 -> R1.cfg)
+#   host        - management IP address reachable from your PC
+#   device_type - Netmiko driver name (cisco_ios for IOS / IOSv / IOSvL2)
+#   role        - router or switch (switches skip OSPF checks)
+# ---------------------------------------------------------------------------
+settings:
+  port: 22
+  timeout: 10        # seconds to wait for an SSH connection
+
+devices:
+  - name: R1
+    host: 192.168.150.101
+    device_type: cisco_ios
+    role: router
+
+  - name: R2
+    host: 192.168.150.102
+    device_type: cisco_ios
+    role: router
+
+  - name: SW1
+    host: 192.168.150.111
+    device_type: cisco_ios
+    role: switch
+
+  - name: SW2
+    host: 192.168.150.112
+    device_type: cisco_ios
+    role: switch

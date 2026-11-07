@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# Secrets - NEVER commit these
+# ---------------------------------------------------------------------------
+.env
+*.env
+!.env.example
+*.key
+*.pem
+credentials*.yaml
+secrets*.yaml
+
+# ---------------------------------------------------------------------------
+# Real device backups and generated reports (may contain password hashes,
+# IP addresses and other sensitive details). Keep them in a PRIVATE repo.
+# ---------------------------------------------------------------------------
+backups/*
+!backups/.gitkeep
+reports/*
+!reports/.gitkeep
+*.log
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+venv/
+.venv/
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
